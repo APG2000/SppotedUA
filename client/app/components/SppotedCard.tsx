@@ -3,6 +3,7 @@ import React from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 
 import EvilIcons from '@expo/vector-icons/EvilIcons';
+import data from '../mocks/SpottedMocksData';
 interface SppotedCardType{
   userName:string,
   distance:string,
@@ -18,8 +19,8 @@ const SppotedCard = (props:SppotedCardType) => {
   return (
     <View className=' bg-black  flex border border-white/20 rounded-xl gap-2 pl-2 pt-3 pb-3 ' >
       <View className='flex flex-row gap-3 '>
-        <View className='bg-red-500 border rounded-xl pt-2 pb-2 pl-2 pr-2'>
-           <Image source={require("../../assets/images/favicon.png")} resizeMode="contain" />
+        <View className='bg-white/15 border rounded-full pt-2 pb-2 pl-2 pr-2'>
+           <Image source={require("../../assets/images/user.png")} resizeMode="contain" className='w-10 h-10' />
         </View>
         <View className='flex flex-col gap-1'>
           <Text className='text-white font-extrabold text-xl'>
@@ -31,13 +32,13 @@ const SppotedCard = (props:SppotedCardType) => {
         </View>
 
          <View className='flex flex-col gap-1'>
-          <View className='border rounded-xl pl-2 pr-2 border-white/20 items-center mt-1'>
+          <View className='border rounded-xl pl-2 pr-2 bg-white/20  items-center mt-1'>
             <Text className='text-white'>
                         {distance}m
               </Text>
           </View>
-          <View className='flex flex-row items-center gap-2 mt-1'>
-            <AntDesign name="clockcircleo" size={15} color="white" />
+          <View className='flex flex-row items-center gap-1 mt-1'>
+            <AntDesign name="clockcircleo" size={12} color="white" />
             <Text className='text-white'>
                         {time.replace("m"," min")}
             </Text>
@@ -47,7 +48,7 @@ const SppotedCard = (props:SppotedCardType) => {
       
       
       </View>
-        <Text className='text-white  font-semibold' >
+        <Text className='text-white font-light text-2sm' >
          {description}
         </Text>
         <View className='flex flex-row  mt-2 pb-2'>
@@ -61,7 +62,7 @@ const SppotedCard = (props:SppotedCardType) => {
                {
             caracteristicas?.map((item,index)=>{
               return(
-                   <Text className='text-white bg-gray-700 border-white/20 border pl-2 pr-2 pt-2 pb-2 rounded-xl' key={index}>
+                   <Text className='text-white  border-b-[#FE8C00]/20 border pl-2 pr-2 pt-2 pb-2 rounded-xl' key={index}>
                         {item}
                     </Text>
          
@@ -85,13 +86,16 @@ const SppotedCard = (props:SppotedCardType) => {
 
           </View>
 
-          <View className='border border-white/20 pl-2 pr-2 pt-2 pb-2 rounded-xl bg-black'>
-            <Text className='text-white '> É voce?</Text>
-          </View>
-
-
+        <View className='border border- pl-2 pr-2 pt-2 pb-2 rounded-xl items-center bg-[#FE8C00]/100 w-[30%] self-center '>
+              <Text className='text-white '> Talvez seja eu</Text>
+            
+        </View>
+                
         </View>
 
+
+  
+        
     </View>
   )
 }

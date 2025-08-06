@@ -3,7 +3,7 @@ import { Redirect, Tabs } from 'expo-router';
 import React from 'react';
 import { Image, ImageSourcePropType, View } from 'react-native';
 const _layout = () => {
-  const UserLoggued=false
+  const UserLoggued=true
 
   if(!UserLoggued){
     return(
@@ -42,7 +42,9 @@ const _layout = () => {
           borderTopLeftRadius:20
           
         }
+        
         }}
+        
     >
         <Tabs.Screen  
             name='index'
@@ -50,6 +52,7 @@ const _layout = () => {
                 title:"Feed",
                 headerShown:false,
                 tabBarShowLabel:false,
+                
                 tabBarIcon:({focused})=>{
                     return(
                         <TabBar focused={focused} icon={images.home} title='Feed' />
@@ -57,6 +60,7 @@ const _layout = () => {
                 }
                 
             }}
+            
         />
              <Tabs.Screen
             name='NewSpotScreen'

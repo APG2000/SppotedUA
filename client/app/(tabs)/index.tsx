@@ -1,16 +1,22 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
-import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, FlatList, Text, TouchableOpacity, View } from 'react-native';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SpottedUALogo from '../components/SpottedUALogo';
 import SppotedCard from '../components/SppotedCard';
 import data from '../mocks/SpottedMocksData';
+import Modal from 'react-native-modal';
 const Tab = () => {
-   
+  const [isVisible,setIsVisible] = useState(false)
+
+  const handleFilter = async () =>{
+    setIsVisible(false)
+
+  }
   return (
     
-   <SafeAreaView className='flex flex-1  bg-black items-center' >
+   <SafeAreaView className='flex flex-1 items-center bg-black/95' >
        
        
         <FlatList
@@ -41,11 +47,14 @@ const Tab = () => {
                         </Text>
 
                     </View>
-                    <View className='bg-white/20 w-30 pl-2 pr-2 h-10 items-center gap-2 justify-around rounded-xl flex flex-row'>
+                    <TouchableOpacity className='bg-white/20 w-30 pl-2 pr-2 h-10 items-center gap-2 justify-around rounded-xl flex flex-row'
+                        onPress={()=>setIsVisible(true)}
+                    >
                         <AntDesign name="filter" size={20} color="white" />
-                        <Text className='text-white'>Filtros</Text>
-                    </View>
+                        <Text className='text-white' >Filtros</Text>
+                    </TouchableOpacity>
                 </View>
+                
 
 
             )
@@ -58,6 +67,25 @@ const Tab = () => {
             )
         }}
         />
+     <Modal isVisible={isVisible} onBackdropPress={()=>setIsVisible(false)}>
+        <View className="flex h-[50%] rounded-2xl  items-center justify-around bg-black/95 border border-white/20">
+          <Text className='text-white'>I am the modal content!</Text>
+          <Text className='text-white'>I am the modal content!</Text>
+          <Text className='text-white'>I am the modal content!</Text>
+          <Text className='text-white'>I am the modal content!</Text>
+          <Text className='text-white'>I am the modal content!</Text>
+          <Text className='text-white'>I am the modal content!</Text>
+          <Text className='text-white'>I am the modal content!</Text>
+          <Text className='text-white'>I am the modal content!</Text>
+          <Text className='text-white'>I am the modal content!</Text>
+          <Text className='text-white'>I am the modal content!</Text>
+        
+          <TouchableOpacity className='bg-[#FE8C00]  w-32 h-10 items-center justify-around rounded-xl' onPress={handleFilter}>
+            <Text className='text-white font-extrabold'>Save</Text>
+          </TouchableOpacity>
+
+        </View>
+      </Modal>
        
     </SafeAreaView>
   )

@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Tab = () => {
   return (
-    <SafeAreaView className='flex flex-1 justify-around items-center bg-red-200'>
+    <SafeAreaView className='flex flex-1 justify-around items-center bg-black/95'>
       <Text>Perfil</Text>
     </SafeAreaView>
   )
