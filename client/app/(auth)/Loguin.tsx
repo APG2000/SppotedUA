@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { KeyboardAvoidingView, Pressable, Text, TextInput, View } from 'react-native'
 import SpottedUALogo from '../components/SpottedUALogo'
 import CustomInput from '../components/CustomInput'
+import LottieView from 'lottie-react-native';
 
 const Loguin = () => {
     const router = useRouter();
@@ -10,22 +11,23 @@ const Loguin = () => {
    const [form,setForm] = useState({email:'',password:""})
 
   return (
-        <KeyboardAvoidingView className='bg-black flex  h-[65%] w-[95%] rounded-xl pl-2 pr-2 pt-2 pb-2 border-white/20 border  justify-center '>
-            <View className='border-b-2 border-b-white/20 h-20 flex flex-row  items-center justify-around  '>
-                   <SpottedUALogo/>
-                   
-            
-                    <View className='flex flex-col'>
-                        <Text className='text-white text-sm text-muted-foreground'>
-                            Campus
-                        </Text>
-                        <Text className='text-white text-sm text-muted-foreground'>
-                            Universitario
-                        </Text>
+    
 
-                    </View>
-                   
-            </View>
+        <View className='flex flex-1 w-full h-full items-center justify-center gap-5'>
+          
+          <LottieView 
+            source={require("@/assets/images/social_media_network.json")}
+                    
+            style={{
+                width:150,
+                height:150,
+                alignSelf:"flex-start"
+            
+            }}
+            autoPlay loop />
+          
+            <Text className='text-white font-extrabold text-3xl'> Login</Text>
+            <View className='bg-black  h-[65%] w-[95%] rounded-xl pl-2 pr-2 pt-2 pb-2 border-white/20 border  justify-center'>
 
             <View className='flex flex-col mt-10 gap-5 pl-2 pr-2'>
                 
@@ -35,7 +37,7 @@ const Loguin = () => {
                 {/*<TextInput className='border border-white/20 h-[20%] text-white  pl-2 rounded-xl' placeholder='Insira a tua senha'   placeholderTextColor={"gray"}/> */} 
 
             </View>
-            <View className='flex items-center mt-10 '>
+            <View className='flex items-center mt-10 gap-4'>
                 <Pressable  onPress={()=>router.replace("/")} style={
                     {
                         backgroundColor:"white",
@@ -62,13 +64,17 @@ const Loguin = () => {
             </View>
            
             
-            <View className='flex flex-row items-center  -mt-14 justify-center gap-2'>
+            <View className='flex flex-row items-center  -mt-5 justify-center gap-2'>
                 
                 <Text className='text-white font-extrabold text-2sm'>Nao tens uma conta? </Text>
                 <Link href={"/(auth)/Register"} className='text-white font-extrabold text-xl border-b-2 border-b-[#FE8C00]'>Crie aqui</Link>
             </View>
 
-        </KeyboardAvoidingView>
+
+            </View>
+
+        </View>
+        
      
   )
 }

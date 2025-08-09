@@ -15,10 +15,7 @@ const CustomInput = ({
 
   return (
     <View className='w-fulljustify-around flex flex-col'>
-      <View className='flex flex-col mb-3'>
-        <Text className='label text-white '>{label}</Text>
-        <View className={cn("border-b-2 border-b-white/50",label==='Email'? "w-[10%]" : "w-[18%]" )}/>
-      </View>
+   
       <TextInput
         autoCapitalize='none'
         autoCorrect={false}

@@ -3,7 +3,7 @@ import { Redirect, Tabs } from 'expo-router';
 import React from 'react';
 import { Image, ImageSourcePropType, View } from 'react-native';
 const _layout = () => {
-  const UserLoggued=true
+  const UserLoggued=false
 
   if(!UserLoggued){
     return(

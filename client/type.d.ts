@@ -6,3 +6,20 @@ export interface CustomInputProps{
     secureTextEntry?:boolean,
     KeyboardType:"default" | "email-address" | "numeric" | "phone-pad"
 }
+
+export interface RegisterUserDataProps{
+      name:string,
+      anonymousName:string,
+      email:string,
+      password:string,
+      genero:"Masculino" | "Feminino",
+      dataNascimento:string,
+      curso:string,
+      altura:string,
+      nacionalidade:string,
+
+}
+
+export interface UserCharacteristics{
+    characteristics:string[]
+}
