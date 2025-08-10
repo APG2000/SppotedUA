@@ -9,7 +9,7 @@ import data from '../mocks/SpottedMocksData';
 import Modal from 'react-native-modal';
 const Tab = () => {
   const [isVisible,setIsVisible] = useState(false)
-
+    
   const handleFilter = async () =>{
     setIsVisible(false)
 

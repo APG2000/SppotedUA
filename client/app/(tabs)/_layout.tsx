@@ -1,11 +1,12 @@
 import { images } from '@/constants';
+import useAuthStore from '@/Store/auth.store';
 import { Redirect, Tabs } from 'expo-router';
 import React from 'react';
 import { Image, ImageSourcePropType, View } from 'react-native';
-const _layout = () => {
-  const UserLoggued=false
+const TabLayout = () => {
+  const {isAuthenticated} = useAuthStore();
 
-  if(!UserLoggued){
+  if(!isAuthenticated){
     return(
       <Redirect href={"/Loguin"}/>
     )
@@ -112,4 +113,4 @@ const _layout = () => {
   )
 }
 
-export default _layout
+export default TabLayout

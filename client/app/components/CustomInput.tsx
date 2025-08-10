@@ -27,7 +27,7 @@ const CustomInput = ({
         placeholder={placeholder}
         placeholderTextColor={"#888"}
         onChangeText={onChangeText}
-        className={cn("border-white/20  border rounded-xl h-14 pl-4 text-white" ,isFocused? "border-b-[#FE8C00]":"border-white/20")}
+        className={cn("border-white/20  border rounded-xl h-14 pl-4  text-white" ,isFocused? "border-b-[#FE8C00]":"border-white/20")}
 
       >
         

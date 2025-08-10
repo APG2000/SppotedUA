@@ -9,8 +9,9 @@ const _layout = () => {
 
   return (
     
-    <SafeAreaView className='bg-black/95 flex flex-1 items-center '>
-              <View className='border-b-2 border-b-white/20 h-20 flex flex-row  items-center gap-10   '>
+    <View className='bg-black/95 flex flex-1 items-center w-full '>
+        <SafeAreaView>
+      <View className='border-b-2 border-b-white/20 h-20 flex flex-row  items-center gap-10   '>
                    <SpottedUALogo/>
                    
             
@@ -25,9 +26,11 @@ const _layout = () => {
                     </View>
                    
             </View>
+        </SafeAreaView>
+        
       <Slot/>  
 
-    </SafeAreaView>
+    </View>
 
     
     
@@ -36,3 +39,18 @@ const _layout = () => {
 }
 
 export default _layout
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

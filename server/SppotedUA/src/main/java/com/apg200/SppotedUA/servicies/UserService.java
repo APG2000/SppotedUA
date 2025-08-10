@@ -11,4 +11,5 @@ import java.util.List;
 public interface UserService {
     UserEntity registerUSer(UserDto userDto);
     List<UserEntity> getAllUsers();
+    UserEntity getUserByName(String name);
 }

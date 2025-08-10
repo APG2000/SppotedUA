@@ -17,7 +17,7 @@ interface SppotedCardType{
 const SppotedCard = (props:SppotedCardType) => {
   const {userName,distance,location,time,description,caracteristicas}=props
   return (
-    <View className=' bg-black  flex border border-white/20 rounded-xl gap-2 pl-2 pt-3 pb-3 ' >
+    <View className=' bg-black  flex border border-b-white/25 rounded-xl gap-2 pl-2 pt-3 pb-3 ' >
       <View className='flex flex-row gap-3 '>
         <View className='bg-white/15 border rounded-full pt-2 pb-2 pl-2 pr-2'>
            <Image source={require("../../assets/images/user.png")} resizeMode="contain" className='w-10 h-10' />

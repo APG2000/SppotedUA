@@ -1,46 +1,52 @@
 import { View, Text, TouchableOpacity, SectionList, FlatList, Pressable, Alert ,Image} from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useNavigation } from 'expo-router'
+import { Redirect, useRouter } from 'expo-router'
 import  caracteristicasPorCategoria  from '../mocks/CaracteristicasMock'
 import CustomBtn from '../components/CustomBtn'
 import * as Progress from 'react-native-progress';
-import LottieView from 'lottie-react-native';
+import  Modal from 'react-native-modal'
+import SuccesAnimation from "@/assets/images/sucess2.json"
+import CustomModalAnimation from '../components/CustomModalAnimation'
 const RegisterDetails = () => {
 
   const [idx,setIdx]=useState(0);
   const [data,setData]=useState(caracteristicasPorCategoria[0]);
-  const [selecionados, setSelecionados] = useState<number[]>([]);
+  const [selecionados, setSelecionados] = useState<string[]>([]);
+  const [doneModalShow,setdoneModalShow]=useState(false)
+  const router = useRouter()
 
-  const handleSelect = (id:number) => {
+ 
+  const handleSelect = (item:string) => {
+    
     setSelecionados((prev) =>
-      prev.includes(id) ? prev.filter((itemId) => itemId !== id) : [...prev, id]
+      prev.includes(item) ? prev.filter((item) => item !== item) : [...prev, item]
+    
     );
   };
+ 
   const handleNextData = ()=>{
     if(idx === caracteristicasPorCategoria.length-1){
-      Alert.alert("Sem mais forms ")
-      return
+      // post the characteristics to db
+      setdoneModalShow(true)
+
+      setTimeout(() => {
+        setdoneModalShow(false)
+      }, 2500);
+    return
     }
     setIdx(idx+1);
-  //  console.log(idx)
+  //
   }
 
   useEffect(()=>{
+    //console.log(idx)
     setData(caracteristicasPorCategoria[idx])
-    // setSelecionados([])
-
     // Bug aqui , quando vai para proxima categoria os idx ainda ficam ativos
   },[idx])
 
 
 
 
-
-
-
-
-
-  const router = useNavigation()
   return (
     <View className='flex flex-1 mt-10  w-full   gap-10 '>
      <View className='flex-col  items-center'>
@@ -93,13 +99,13 @@ const RegisterDetails = () => {
             className='w-full'
             showsVerticalScrollIndicator={false}            
             renderItem={(item)=>{
-                  const ativo = selecionados.includes(item.index);
+               const ativo = selecionados.includes(data.categoria+'/'+item.item);
               return(
               <TouchableOpacity
                   className={`flex items-center justify-around rounded-xl w-full h-20 ${
                     ativo ? 'bg-white' : 'bg-black'
                   }`}
-                  onPress={() => handleSelect(item.index)}
+                  onPress={() => handleSelect(data.categoria+'/'+item.item)}
                 >
                   <Text className={ativo ? 'text-black' : 'text-white'}>
                     {item.item}
@@ -111,17 +117,7 @@ const RegisterDetails = () => {
           
           />
           
-          {/* {caracteristicasPorCategoria[0].opcoes.map((item,index)=>{
-            return(
-
-                  <Text className='bg-black/95 text-white h-20 w-full rounded-xl text-center pt-5' key={index}>{item}</Text>
-
-            )
-
-          })
-
-          } */}
-        
+ 
 
         </View>
   
@@ -131,15 +127,29 @@ const RegisterDetails = () => {
      <View className='flex-row items-center justify-around mt-20 '>
                       <CustomBtn title='Depois faço isso' onPress={()=>Alert.alert("ola")}/>
                       <CustomBtn title='Continuar' onPress={handleNextData}/>
-
-
       </View>
-      <TouchableOpacity onPress={()=>router.goBack()}>
+      <TouchableOpacity onPress={()=>router.back()}>
         <Text className='text-white bg-red-300 w-20 rounded-2xl h-5 text-center justify-around'>
           Voltar
         </Text>
       
       </TouchableOpacity>
+
+      <CustomModalAnimation
+        isVisible={doneModalShow}
+        title='Tudo Pronto'
+        subTitle='Bem vindo ao SppotedUA'
+        width={400}
+        height={400}
+        backdropColor='black'
+        animation={SuccesAnimation}
+        titleColor='[#FE8C00]'
+        subtitleColor='[#FE8C00]'
+        titleSize='3xl'
+        subTitleSize='text-2xl'
+        onModalHide={()=>router.push("/")}
+      />
+    
     </View>
   )
 }
