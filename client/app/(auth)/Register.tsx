@@ -28,7 +28,7 @@ const Register = () => {
              
   const handleRegister=async () =>{
 
-    if((form.email || form.password || form.curso || form.name) === ""){
+    if(form.email==="" || form.password ==="" || form.curso==="" || form.name === ""){
       setModalTitle('Por favor')
       setmodalSubTitle('Preenche corretamente o formulario')
       setErrorModal(true)

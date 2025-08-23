@@ -4,14 +4,14 @@ import { Redirect, Tabs } from 'expo-router';
 import React from 'react';
 import { Image, ImageSourcePropType, View } from 'react-native';
 const TabLayout = () => {
-  const {isAuthenticated} = useAuthStore();
+//const isAuthenticated = true//{isAuthenticated} = useAuthStore();
+const  {isAuthenticated} = useAuthStore();
 
-  if(!isAuthenticated){
+if(!isAuthenticated){
     return(
-      <Redirect href={"/Loguin"}/>
+    <Redirect href={"/Loguin"}/>
     )
-  }
-  
+}
 
   interface TabBarIconProps {
     focused: boolean;
@@ -63,7 +63,7 @@ const TabLayout = () => {
             }}
             
         />
-             <Tabs.Screen
+            <Tabs.Screen
             name='NewSpotScreen'
             options={{
                 title:"Spot",
@@ -84,7 +84,7 @@ const TabLayout = () => {
                 title:"Conversas",
                 headerShown:false,
                 tabBarShowLabel:false,
-                 tabBarIcon:({focused})=>{
+                tabBarIcon:({focused})=>{
                     return(
                         <TabBar focused={focused} icon={images.chat} title='Chat' />
                     )

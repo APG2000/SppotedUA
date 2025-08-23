@@ -143,8 +143,8 @@ const RegisterDetails = () => {
         height={400}
         backdropColor='black'
         animation={SuccesAnimation}
-        titleColor='[#FE8C00]'
-        subtitleColor='[#FE8C00]'
+        titleColor='white'
+        subtitleColor='white'
         titleSize='3xl'
         subTitleSize='text-2xl'
         onModalHide={()=>router.push("/")}

@@ -2,7 +2,7 @@ import { Use } from 'react-native-svg'
 import {create} from 'zustand'
 import { Loguin } from '@/services/Auth'
 interface User{
-    name:string,
+    username:string,
     token:string,
     roles:string[]
 }
@@ -13,7 +13,7 @@ type AuthState={
     isLoading:boolean,
     setIsAuthenticated:(value:boolean)=>void
     setLoading:(loading:boolean) => void
-    AuthenticateUSer:(userName:string,password:string)=>Promise<void>
+    AuthenticateUSer:(userName:string,password:string)=>Promise<boolean>
     user:User | null
     setUser:(user:User|null) =>void
     
@@ -37,13 +37,16 @@ const useAuthStore = create<AuthState>((set)=>({
             const user = await Loguin(userName,password)
             if(user){
                 set({isAuthenticated:true,user:user as User})
+                return true
 
             }else{
                 set({isAuthenticated:false,user:null})
+                return false
             }
         }catch(error){
          console.log('fetchAuthenticatedUser error ',error)
          set({isAuthenticated:false,user:null}) 
+         return false
         }finally{
             set({isLoading:false})
         }

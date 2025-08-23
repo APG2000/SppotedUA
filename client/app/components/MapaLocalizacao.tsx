@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, ActivityIndicator, Text } from 'react-native';
+import { View, StyleSheet, ActivityIndicator, Text, Platform } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 export default function MapaLocalizacao() {
+  
   const [location, setLocation] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -21,6 +22,10 @@ export default function MapaLocalizacao() {
       setLoading(false);
     })();
   }, []);
+
+    if (Platform.OS === 'web') {
+    return <Text>Mapa não disponível na web.</Text>;
+  }
   
   if (loading || !location) {
     return (

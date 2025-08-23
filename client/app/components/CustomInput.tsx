@@ -9,14 +9,22 @@ const CustomInput = ({
     onChangeText,
     label,
     secureTextEntry=false,
-    KeyboardType="default"
+    KeyboardType="default",
+    onSubmitEditing,
+    clasName,
+    editable,
+    multiline,
+    numberOfLines
+
 }:CustomInputProps) => {
     const [isFocused,setIsfocused]=useState(false)
 
   return (
     <View className='w-fulljustify-around flex flex-col'>
-   
       <TextInput
+        editable={editable}
+        multiline={multiline}
+        numberOfLines={numberOfLines}
         autoCapitalize='none'
         autoCorrect={false}
         value={value}
@@ -27,8 +35,8 @@ const CustomInput = ({
         placeholder={placeholder}
         placeholderTextColor={"#888"}
         onChangeText={onChangeText}
-        className={cn("border-white/20  border rounded-xl h-14 pl-4  text-white" ,isFocused? "border-b-[#FE8C00]":"border-white/20")}
-
+        className={clasName ? clasName : cn("border-white/20 border rounded-xl h-14 pl-4 text-white", isFocused ? "border-b-[#FE8C00]" : "border-white/20")}
+        onSubmitEditing={onSubmitEditing}
       >
         
       </TextInput>

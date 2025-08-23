@@ -5,6 +5,11 @@ export interface CustomInputProps{
     label:string,
     secureTextEntry?:boolean,
     KeyboardType:"default" | "email-address" | "numeric" | "phone-pad"
+    onSubmitEditing?:()=>void
+    editable?:boolean
+    multiline?:boolean
+    numberOfLines?:number
+    clasName?:string
 }
 
 export interface RegisterUserDataProps{
